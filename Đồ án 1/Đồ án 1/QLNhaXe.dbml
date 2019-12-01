@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLXe" Class="QLNhaXeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-I7EAN0I;Initial Catalog=QLXe;Integrated Security=True" SettingsObjectName="Đồ_án_1.Properties.Settings" SettingsPropertyName="TestConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="TK" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="quyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QLNhanVien" Member="QLNhanViens">
+    <Type Name="QLNhanVien">
+      <Column Name="MaNV" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QLXe" Member="QLXes">
+    <Type Name="QLXe">
+      <Column Name="Bienso" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LoaiXe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HinhThucGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaKH" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="QLXe_QLHoaDon" Member="QLHoaDons" ThisKey="Bienso" OtherKey="BienSo" Type="QLHoaDon" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QLKhachHang" Member="QLKhachHangs">
+    <Type Name="QLKhachHang">
+      <Column Name="MaKH" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="QLKhachHang_QLHoaDon" Member="QLHoaDons" ThisKey="MaKH" OtherKey="MaKH" Type="QLHoaDon" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QLHoaDon" Member="QLHoaDons">
+    <Type Name="QLHoaDon">
+      <Column Name="MaKH" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BienSo" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LoaiXe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HinhThucGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhTien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="QLKhachHang_QLHoaDon" Member="QLKhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="QLKhachHang" IsForeignKey="true" />
+      <Association Name="QLXe_QLHoaDon" Member="QLXe" ThisKey="BienSo" OtherKey="Bienso" Type="QLXe" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
